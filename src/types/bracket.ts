@@ -1,0 +1,19 @@
+export interface Player {
+  id: number;
+  name: string;
+  phone: string;
+  age: string;
+}
+
+export interface Match {
+  player1: Player;
+  player2: Player;
+}
+
+export interface BracketRound {
+  round: number;
+  matches: Match[];
+  active: boolean;
+}
+
+export type BracketData = BracketRound[];
