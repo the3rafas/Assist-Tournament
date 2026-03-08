@@ -333,7 +333,139 @@
   min-width: 70px;
 }
 
-.roundLabelInactive{
+.roundLabelInactive {
   opacity: 0.5;
   cursor: auto;
+}
+
+/* Admin support mode */
+.adminBadge {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.matchSlotAdmin {
+  outline: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
+.matchSlotWinner {
+  font-weight: 800;
+  color: #492E71;
+}
+
+.matchSlotWinnerBadge {
+  font-size: 10px;
+  font-weight: 700;
+  color: #2d8a2d;
+  margin-top: 2px;
+}
+
+.adminOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+}
+
+.adminPopup {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.adminPopupTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.adminPopupMatch {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.adminPopupOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.adminPopupBtn {
+  padding: 12px 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: #f8f8f8;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.adminPopupBtn:hover {
+  border-color: #492E71;
+  background: #f0ecf5;
+}
+
+.adminPopupBtnSelected {
+  border-color: #492E71;
+  background: #e8e0f0;
+  color: #492E71;
+}
+
+.adminPopupActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.adminPopupCancel {
+  padding: 10px 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+}
+
+.adminPopupCancel:hover {
+  background: #f0f0f0;
+}
+
+.adminPopupSave {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #492E71;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+.adminPopupSave:hover:not(:disabled) {
+  background: #3d2660;
+}
+
+.adminPopupSave:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
