@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import fs from "fs";
 import path from "path";
 import Bracket from "@/components/Bracket";
@@ -8,5 +9,9 @@ export default function Home() {
   const data: BracketData = JSON.parse(
     fs.readFileSync(filePath, "utf-8")
   );
-  return <Bracket data={data} />;
+  return (
+    <Suspense fallback={<div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#492E71", color: "#fff" }}>Loading…</div>}>
+      <Bracket data={data} />
+    </Suspense>
+  );
 }
