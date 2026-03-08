@@ -14,6 +14,7 @@ export interface BracketRound {
   round: number;
   matches: Match[];
   active: boolean;
+  thirdPlaceMatch?: Match;
 }
 
 export type BracketData = BracketRound[];

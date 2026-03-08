@@ -167,12 +167,20 @@ export default function Bracket({ data, title = "Assist Ramadan Cup" }: BracketP
     .sort((a, b) => a.round - b.round);
 
   const openMatchRound = openAdminMatch ? data.find((r) => r.round === openAdminMatch.round) : null;
+  const isThirdPlaceMatch =
+    openAdminMatch &&
+    openMatchRound &&
+    openMatchRound.thirdPlaceMatch &&
+    openAdminMatch.matchIndex === openMatchRound.matches.length;
   const openMatchData =
-    openAdminMatch && openMatchRound && openMatchRound.matches[openAdminMatch.matchIndex]
-      ? openMatchRound.matches[openAdminMatch.matchIndex]
+    openAdminMatch && openMatchRound
+      ? isThirdPlaceMatch
+        ? openMatchRound.thirdPlaceMatch
+        : openMatchRound.matches[openAdminMatch.matchIndex] ?? null
       : null;
-  const openMatchKey = openAdminMatch ? `R${openAdminMatch.round}-${openAdminMatch.matchIndex + 1}` : null;
-  const existingWinner = openMatchKey ? winners[openMatchKey] : null;
+  const openMatchKey = openAdminMatch
+    ? `R${openAdminMatch.round}-${openAdminMatch.matchIndex + 1}${isThirdPlaceMatch ? " (3rd Place)" : ""}`
+    : null;
 
   const openAdminPopup = (round: number, matchIndex: number) => {
     setOpenAdminMatch({ round, matchIndex });
@@ -207,7 +215,7 @@ export default function Bracket({ data, title = "Assist Ramadan Cup" }: BracketP
               key={r.round}
               type="button"
               className={`${styles.roundLabel} ${getLabelClass(r)} ${r.round === minVisibleRound ? styles.roundLabelActive : ""} ${r.active ? "" : styles.roundLabelInactive}`}
-              onClick={() => (r.active ? setMinVisibleRound(r.round) : null)}
+              onClick={() => ( r.active ? setMinVisibleRound(r.round) : null)}
             >
               {getRoundLabel(r)}
             </button>
@@ -220,13 +228,28 @@ export default function Bracket({ data, title = "Assist Ramadan Cup" }: BracketP
               <MatchSlot
                 key={`${targetRound.round}-${i}`}
                 match={match}
-                matchLabel={`R${targetRound.round}-${i + 1}`}
+                matchLabel={targetRound.round === 7 && i === 0 ? "Final" : `R${targetRound.round}-${i + 1}`}
                 schedule={getMatchSchedule(targetRound.round, i)}
                 isAdminMode={isAdminSupport}
                 onAdminClick={isAdminSupport ? () => openAdminPopup(targetRound.round, i) : undefined}
                 winner={winners[`R${targetRound.round}-${i + 1}`]}
               />
             ))}
+            {targetRound.round === 7 && targetRound.thirdPlaceMatch && (
+              <MatchSlot
+                key={`${targetRound.round}-3rd`}
+                match={targetRound.thirdPlaceMatch}
+                matchLabel="3rd Place"
+                schedule={getMatchSchedule(targetRound.round, targetRound.matches.length)}
+                isAdminMode={isAdminSupport}
+                onAdminClick={
+                  isAdminSupport
+                    ? () => openAdminPopup(targetRound.round, targetRound.matches.length)
+                    : undefined
+                }
+                winner={winners[`R${targetRound.round}-${targetRound.matches.length + 1}`]}
+              />
+            )}
           </div>
         )}
       </div>
