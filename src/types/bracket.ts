@@ -8,6 +8,8 @@ export interface Player {
 export interface Match {
   player1: Player;
   player2: Player;
+  winnerId: number;
+  score: string;
 }
 
 export interface BracketRound {
