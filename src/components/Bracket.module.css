@@ -358,7 +358,12 @@
 
 .matchSlotWinner {
   font-weight: 800;
-  color: #492E71;
+  color: #0d5c0d;
+}
+
+.matchSlotLoser {
+  color: #888;
+  font-weight: 500;
 }
 
 .matchSlotWinnerBadge {
@@ -429,6 +434,54 @@
   border-color: #492E71;
   background: #e8e0f0;
   color: #492E71;
+}
+
+.adminScoreRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.adminScoreLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.adminScoreLabel span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.adminScoreInput {
+  width: 100%;
+  max-width: 80px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+}
+
+.adminScoreDash {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #999;
+}
+
+.adminPopupError {
+  font-size: 0.85rem;
+  color: #c00;
+  margin-bottom: 12px;
 }
 
 .adminPopupActions {

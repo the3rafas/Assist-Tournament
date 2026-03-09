@@ -61,7 +61,6 @@ function MatchSlot({
   schedule,
   isAdminMode,
   onAdminClick,
-  winner,
 }: {
   match: Match;
   matchLabel?: string;
@@ -69,13 +68,14 @@ function MatchSlot({
   schedule?: { date: string; time: string };
   isAdminMode?: boolean;
   onAdminClick?: () => void;
-  winner?: "player1" | "player2";
+
 }) {
   const [showInfo, setShowInfo] = useState(false);
   const slotRef = useRef<HTMLDivElement>(null);
 
   const p1 = match.player1?.name ?? "—";
   const p2 = match.player2?.name ?? "—";
+  const winnerName = match.winnerId ? match.winnerId === match.player1?.id? match.player1.name : match.player2?.name : "";
 
   useEffect(() => {
     if (!showInfo) return;
@@ -112,20 +112,32 @@ function MatchSlot({
         </span>
       )}
       <div className={styles.matchSlotLine}>
-        <span className={`${styles.matchSlotName} ${winner === "player1" ? styles.matchSlotWinner : ""}`} title={p1}>
+        <span
+          className={`${styles.matchSlotName} ${
+            match.winnerId != null
+              ? match.winnerId === match.player1?.id
+                ? styles.matchSlotWinner
+                : styles.matchSlotLoser
+              : ""
+          }`}
+          title={p1}  
+        >
           {p1}
         </span>
         <span className={styles.matchSlotVs}>VS</span>
-        <span className={`${styles.matchSlotName} ${winner === "player2" ? styles.matchSlotWinner : ""}`} title={p2}>
+        <span
+          className={`${styles.matchSlotName} ${
+            match.winnerId != null
+              ? match.winnerId === match.player2?.id
+                ? styles.matchSlotWinner
+                : styles.matchSlotLoser
+              : ""
+          }`}
+          title={p2}
+        >
           {p2}
         </span>
       </div>
-      {winner && (
-        <span className={styles.matchSlotWinnerBadge}>
-          Winner: {winner === "player1" ? p1 : p2}
-        </span>
-      )}
-     
     </div>
   );
 }
@@ -141,25 +153,13 @@ export default function Bracket({ data, title = "Assist Ramadan Cup" }: BracketP
     searchParams.get("admin") === "support" || searchParams.get("adminSupport") === "true";
 
   const [minVisibleRound, setMinVisibleRound] = useState(1);
-  const [winners, setWinners] = useState<Record<string, "player1" | "player2">>(() => {
-    if (typeof window === "undefined") return {};
-    try {
-      const raw = localStorage.getItem(WINNERS_STORAGE_KEY);
-      return raw ? JSON.parse(raw) : {};
-    } catch {
-      return {};
-    }
-  });
   const [openAdminMatch, setOpenAdminMatch] = useState<{ round: number; matchIndex: number } | null>(null);
   const [selectedWinner, setSelectedWinner] = useState<"player1" | "player2" | null>(null);
+  const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "done" | "error">("idle");
 
-  useEffect(() => {
-    try {
-      localStorage.setItem(WINNERS_STORAGE_KEY, JSON.stringify(winners));
-    } catch {
-      // ignore
-    }
-  }, [winners]);
+
+
+ 
 
   const targetRound = data.find((r) => r.round === minVisibleRound);
   const roundLabelsList = data
@@ -185,20 +185,41 @@ export default function Bracket({ data, title = "Assist Ramadan Cup" }: BracketP
   const openAdminPopup = (round: number, matchIndex: number) => {
     setOpenAdminMatch({ round, matchIndex });
     const key = `R${round}-${matchIndex + 1}`;
-    setSelectedWinner(winners[key] ?? null);
+    setSaveStatus("idle");
   };
 
-  const saveWinner = () => {
+  const saveWinner = async () => {
     if (!openAdminMatch || selectedWinner === null) return;
     const key = `R${openAdminMatch.round}-${openAdminMatch.matchIndex + 1}`;
-    setWinners((prev) => ({ ...prev, [key]: selectedWinner }));
-    setOpenAdminMatch(null);
-    setSelectedWinner(null);
+    setSaveStatus("saving");
+    try {
+      const res = await fetch("/api/bracket", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          matchKey: key,
+          winner: selectedWinner,
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error ?? res.statusText);
+      }
+      setSaveStatus("done");
+      setTimeout(() => {
+        setOpenAdminMatch(null);
+        setSelectedWinner(null);
+        setSaveStatus("idle");
+      }, 400);
+    } catch (e) {
+      setSaveStatus("error");
+    }
   };
 
   const closeAdminPopup = () => {
     setOpenAdminMatch(null);
     setSelectedWinner(null);
+    setSaveStatus("idle");
   };
 
   return (
@@ -232,7 +253,6 @@ export default function Bracket({ data, title = "Assist Ramadan Cup" }: BracketP
                 schedule={getMatchSchedule(targetRound.round, i)}
                 isAdminMode={isAdminSupport}
                 onAdminClick={isAdminSupport ? () => openAdminPopup(targetRound.round, i) : undefined}
-                winner={winners[`R${targetRound.round}-${i + 1}`]}
               />
             ))}
             {targetRound.round === 7 && targetRound.thirdPlaceMatch && (
@@ -247,7 +267,6 @@ export default function Bracket({ data, title = "Assist Ramadan Cup" }: BracketP
                     ? () => openAdminPopup(targetRound.round, targetRound.matches.length)
                     : undefined
                 }
-                winner={winners[`R${targetRound.round}-${targetRound.matches.length + 1}`]}
               />
             )}
           </div>
@@ -275,6 +294,9 @@ export default function Bracket({ data, title = "Assist Ramadan Cup" }: BracketP
                 {openMatchData.player2?.name ?? "—"}
               </button>
             </div>
+            {saveStatus === "error" && (
+              <p className={styles.adminPopupError}>Failed to save. Try again.</p>
+            )}
             <div className={styles.adminPopupActions}>
               <button type="button" className={styles.adminPopupCancel} onClick={closeAdminPopup}>
                 Cancel
@@ -283,9 +305,9 @@ export default function Bracket({ data, title = "Assist Ramadan Cup" }: BracketP
                 type="button"
                 className={styles.adminPopupSave}
                 onClick={saveWinner}
-                disabled={selectedWinner === null}
+                disabled={selectedWinner === null || saveStatus === "saving"}
               >
-                Save
+                {saveStatus === "saving" ? "Saving…" : saveStatus === "done" ? "Saved" : "Save"}
               </button>
             </div>
           </div>
