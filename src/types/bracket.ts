@@ -10,6 +10,7 @@ export interface Match {
   player2: Player;
   winnerId?: number;
   score?: string;
+  group?: boolean;
 }
 
 export interface BracketRound {

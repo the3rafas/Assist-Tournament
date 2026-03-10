@@ -129,6 +129,79 @@
   min-width: 0;
 }
 
+/* Single card listing all knock-out pairings (index vs index+1) */
+.knockOutCard {
+  width: 100%;
+  max-width: 360px;
+  min-width: 0;
+  margin: auto;
+  background: linear-gradient(180deg, #f8f8f8 0%, #e8e8e8 55%, #dedede 100%);
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow:
+    0 1px 2px rgba(255, 255, 255, 0.85) inset,
+    0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.knockOutCardTitle {
+  font-size: 12px;
+  font-weight: 800;
+  color: #492E71;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(73, 46, 113, 0.2);
+}
+
+.knockOutCardRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  padding: 8px 4px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.knockOutCardRow:last-child {
+  margin-bottom: 0;
+}
+
+.knockOutCardLabel {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 700;
+  color: #8A48BC;
+  min-width: 2.5rem;
+}
+
+.knockOutCardName {
+  flex: 1 1 0;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.knockOutCardVs {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 800;
+  color: #492E71;
+  opacity: 0.9;
+}
+
 .bracketSide {
   display: flex;
   gap: 1rem;
