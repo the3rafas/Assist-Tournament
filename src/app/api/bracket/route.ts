@@ -5,9 +5,10 @@ import path from "path";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { matchKey, winner } = body as {
+    const { matchKey, winner, score } = body as {
       matchKey: string;
       winner: "player1" | "player2";
+      score?: string;
     };
 
     if (!matchKey || !winner) {
@@ -52,6 +53,9 @@ export async function POST(request: Request) {
         : { ...match.player2 };
 
     match.winnerId = winnerId;
+    if (score !== undefined) {
+      match.score = typeof score === "string" ? score.trim() || undefined : undefined;
+    }
 
     // Propagate winner to next round (R1→R2, R2→R3, … R6→R7; skip final and 3rd place)
     if (roundNum < 7 && !isThirdPlace) {
@@ -67,7 +71,7 @@ export async function POST(request: Request) {
 
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
 
-    return NextResponse.json({ ok: true, matchKey, winner });
+    return NextResponse.json({ ok: true, matchKey, winner, score: match.score });
   } catch (err) {
     console.error("bracket API error:", err);
     return NextResponse.json(

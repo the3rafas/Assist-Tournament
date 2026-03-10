@@ -13,17 +13,26 @@ const KNOCK_OUT_DATA: {
   name: string;
   phone: string;
   age: string;
-  group?: boolean;
+  winner?: boolean;
 }[] = [
-  { id: 2, name: "باقي", phone: "01027369809", age: "25" },
+  { id: 2, name: "باقي", phone: "01027369809", age: "25" , winner:true },
   { id: 7, name: "فادي", phone: "01553205057", age: "18" },
   { id: 15, name: "محمد فتحي", phone: "01009605918", age: "22" },
-  { id: 9, name: "محمد ود", phone: "01099875533", age: "25" },
+  { id: 9, name: "محمد ود", phone: "01099875533", age: "25" , winner:true },
   { id: 12, name: "MahmoudOmar", phone: "01095039367", age: "23" },
-  { id: 145, name: "خالد العطار", phone: "01018028452", age: "22" },
-  { id: 104, name: "خالد السيد", phone: "01009721497", age: "20" },
+  { id: 145, name: "خالد العطار", phone: "01018028452", age: "22" ,winner:true},
+  { id: 104, name: "يوسف احمد حسنين ", phone: "01009721497", age: "20" , winner:true},
   { id: 97, name: "عمرو خالد", phone: "01158146088", age: "23" },
 ];
+
+const KNOCK_OUT_SCORE:Record<number, string>  = 
+{
+  2: "2-0",
+  9: "2-1",
+  145: "2-0",
+  97: "2-0",
+  104: "10/3",
+};
 
 /** Derive round label from data: round 1 = 128, round 2 = 64, etc. */
 function getRoundLabel(round: BracketRound): string {
@@ -174,6 +183,11 @@ function MatchSlot({
           {p2}
         </span>
       </div>
+      {match.score != null && match.score !== "" && (
+        <span className={styles.matchSlotScore} title="Score">
+          {match.score}
+        </span>
+      )}
     </div>
   );
 }
@@ -200,6 +214,7 @@ export default function Bracket({
   const [selectedWinner, setSelectedWinner] = useState<
     "player1" | "player2" | null
   >(null);
+  const [adminScore, setAdminScore] = useState("");
   const [saveStatus, setSaveStatus] = useState<
     "idle" | "saving" | "done" | "error"
   >("idle");
@@ -231,9 +246,18 @@ export default function Bracket({
 
   const openAdminPopup = (round: number, matchIndex: number) => {
     setOpenAdminMatch({ round, matchIndex });
-    const key = `R${round}-${matchIndex + 1}`;
+    setAdminScore("");
     setSaveStatus("idle");
   };
+
+  // When popup opens, prefill score from current match
+  useEffect(() => {
+    if (openMatchData?.score != null && openMatchData.score !== "") {
+      setAdminScore(openMatchData.score);
+    } else {
+      setAdminScore("");
+    }
+  }, [openAdminMatch?.round, openAdminMatch?.matchIndex, openMatchData?.score]);
 
   const saveWinner = async () => {
     if (!openAdminMatch || selectedWinner === null) return;
@@ -246,6 +270,7 @@ export default function Bracket({
         body: JSON.stringify({
           matchKey: key,
           winner: selectedWinner,
+          score: adminScore.trim() || undefined,
         }),
       });
       if (!res.ok) {
@@ -256,6 +281,7 @@ export default function Bracket({
       setTimeout(() => {
         setOpenAdminMatch(null);
         setSelectedWinner(null);
+        setAdminScore("");
         setSaveStatus("idle");
       }, 400);
     } catch (e) {
@@ -266,6 +292,7 @@ export default function Bracket({
   const closeAdminPopup = () => {
     setOpenAdminMatch(null);
     setSelectedWinner(null);
+    setAdminScore("");
     setSaveStatus("idle");
   };
 
@@ -308,18 +335,48 @@ export default function Bracket({
                 const i = pairIdx * 2;
                 const p1 = KNOCK_OUT_DATA[i];
                 const p2 = KNOCK_OUT_DATA[i + 1];
+                const p1Won = p1?.winner === true;
+                const p2Won = p2?.winner === true;
+                const hasWinner = p1Won || p2Won;
+                const winnerId =
+                  p1Won ? p1?.id : p2Won ? p2?.id : undefined;
+                const scoreText =
+                  winnerId != null ? KNOCK_OUT_SCORE[winnerId] : undefined;
                 return (
                   <div key={pairIdx} className={styles.knockOutCardRow}>
                     <span className={styles.knockOutCardLabel}>
                       KO-{pairIdx + 1}
                     </span>
-                    <span className={styles.knockOutCardName} title={p1?.name}>
+                    <span
+                      className={`${styles.knockOutCardName} ${
+                        hasWinner
+                          ? p1Won
+                            ? styles.matchSlotWinner
+                            : styles.matchSlotLoser
+                          : ""
+                      }`}
+                      title={p1?.name}
+                    >
                       {p1?.name ?? "—"}
                     </span>
                     <span className={styles.knockOutCardVs}>VS</span>
-                    <span className={styles.knockOutCardName} title={p2?.name}>
+                    <span
+                      className={`${styles.knockOutCardName} ${
+                        hasWinner
+                          ? p2Won
+                            ? styles.matchSlotWinner
+                            : styles.matchSlotLoser
+                          : ""
+                      }`}
+                      title={p2?.name}
+                    >
                       {p2?.name ?? "—"}
                     </span>
+                    {scoreText != null && scoreText !== "" && (
+                      <span className={styles.knockOutCardScore} title="Score">
+                        {scoreText}
+                      </span>
+                    )}
                   </div>
                 );
               }
@@ -407,6 +464,19 @@ export default function Bracket({
               >
                 {openMatchData.player2?.name ?? "—"}
               </button>
+            </div>
+            <div className={styles.adminScoreRow}>
+              <label className={styles.adminScoreLabel}>
+                <span>Score</span>
+                <input
+                  type="text"
+                  className={styles.adminScoreInput}
+                  placeholder="e.g. 2-1"
+                  value={adminScore}
+                  onChange={(e) => setAdminScore(e.target.value)}
+                  aria-label="Match score"
+                />
+              </label>
             </div>
             {saveStatus === "error" && (
               <p className={styles.adminPopupError}>

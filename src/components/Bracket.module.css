@@ -202,6 +202,14 @@
   opacity: 0.9;
 }
 
+.knockOutCardScore {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0d5c0d;
+  margin-left: 4px;
+}
+
 .bracketSide {
   display: flex;
   gap: 1rem;
@@ -236,6 +244,7 @@
 }
 
 .matchSlot {
+  position: relative;
   width: 72px;
   min-width: 87px;
   min-height: 48px;
@@ -297,6 +306,21 @@
   flex-shrink: 0;
   font-size: 0.85em;
   opacity: 0.9;
+}
+
+.matchSlotScore {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #492E71, #3d2860);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 .matchSlotInfo {

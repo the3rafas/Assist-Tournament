@@ -14,7 +14,9 @@
           "name": "محمد يونس",
           "phone": "01066753531",
           "age": "20"
-        }
+        },
+        "winnerId": 64,
+        "score": "4-3"
       },
       {
         "player1": {
@@ -28,7 +30,9 @@
           "name": "كريم ايمن",
           "phone": "01500045603",
           "age": "21"
-        }
+        },
+        "winnerId": 16,
+        "score": "3-2"
       },
       {
         "player1": {
@@ -38,27 +42,29 @@
           "age": "19"
         },
         "player2": {
-          "id": 0,
-          "name": "KO-R3",
-          "phone": "",
-          "age": "",
-          "alias": true
-        }
+          "id": 145,
+          "name": "خالد العطار",
+          "phone": "01018028452",
+          "age": "22"
+        },
+        "winnerId": 145,
+        "score": "9-4"
       },
       {
         "player1": {
-          "id": 0,
-          "name": "KO-R1",
-          "phone": "",
-          "age": "",
-          "alias": true
+          "id": 2,
+          "name": "باقي",
+          "phone": "01027369809",
+          "age": "25"
         },
         "player2": {
           "id": 109,
           "name": "محمد عبد الرازق البكري",
           "phone": "01022838007",
           "age": "18"
-        }
+        },
+        "winnerId": 2,
+        "score": "4-2"
       },
       {
         "player1": {
@@ -72,7 +78,9 @@
           "name": "Mahmoud elbdwehe",
           "phone": "01062061992",
           "age": "19"
-        }
+        },
+        "winnerId": 53,
+        "score": "3-1"
       },
       {
         "player1": {
@@ -86,7 +94,9 @@
           "name": "شهاب عصام",
           "phone": "01029906000",
           "age": "22"
-        }
+        },
+        "winnerId": 5,
+        "score": "10-7"
       },
       {
         "player1": {
@@ -152,11 +162,10 @@
           "age": "23"
         },
         "player2": {
-          "id": 0,
-          "name": "KO-R2",
-          "phone": "",
-          "age": "",
-          "alias": true
+          "id": 9,
+          "name": "محمد ود",
+          "phone": "01099875533",
+          "age": "25"
         }
       },
       {
@@ -195,11 +204,10 @@
           "age": "19"
         },
         "player2": {
-            "id": 0,
-            "name": "KO-R4",
-            "phone": "",
-            "age": "",
-            "alias": true
+          "id": 104,
+          "name": "يوسف احمد حسنين ",
+          "phone": "01009721497",
+          "age": "20"
         }
       },
       {
@@ -238,44 +246,44 @@
     "matches": [
       {
         "player1": {
-          "id": 0,
-          "name": "Winner R1-1",
-          "phone": "",
-          "age": ""
+          "id": 64,
+          "name": "محمد يونس",
+          "phone": "01066753531",
+          "age": "20"
         },
         "player2": {
-          "id": 0,
-          "name": "Winner R1-2",
-          "phone": "",
-          "age": ""
+          "id": 16,
+          "name": "كريم ايمن",
+          "phone": "01500045603",
+          "age": "21"
         }
       },
       {
         "player1": {
-          "id": 0,
-          "name": "Winner R1-3",
-          "phone": "",
-          "age": ""
+          "id": 145,
+          "name": "خالد العطار",
+          "phone": "01018028452",
+          "age": "22"
         },
         "player2": {
-          "id": 0,
-          "name": "Winner R1-4",
-          "phone": "",
-          "age": ""
+          "id": 2,
+          "name": "باقي",
+          "phone": "01027369809",
+          "age": "25"
         }
       },
       {
         "player1": {
-          "id": 0,
-          "name": "Winner R1-5",
-          "phone": "",
-          "age": ""
+          "id": 53,
+          "name": "عمرو احمد حلمي",
+          "phone": "01029450706",
+          "age": "20"
         },
         "player2": {
-          "id": 0,
-          "name": "Winner R1-6",
-          "phone": "",
-          "age": ""
+          "id": 5,
+          "name": "شهاب عصام",
+          "phone": "01029906000",
+          "age": "22"
         }
       },
       {
