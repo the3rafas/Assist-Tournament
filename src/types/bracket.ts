@@ -11,6 +11,7 @@ export interface Match {
   winnerId?: number;
   score?: string;
   group?: boolean;
+  date: string;
 }
 
 export interface BracketRound {

@@ -153,7 +153,7 @@ function MatchSlot({
       )}
       {schedule && (
         <span className={styles.matchSlotSchedule}>
-          {schedule.date} 
+          {match.date} 
         </span>
       )}
       <div className={styles.matchSlotLine}>
@@ -320,7 +320,7 @@ export default function Bracket({
             </button>
           ))}
         </div>
-        {KNOCK_OUT_DATA.length > 0 && (
+        {KNOCK_OUT_DATA.length > 0 && targetRound?.round===1  && (
           <div className={styles.knockOutCard}>
             <div className={styles.knockOutCardTitle}>Knock out</div>
             <span

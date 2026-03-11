@@ -16,7 +16,8 @@
           "age": "20"
         },
         "winnerId": 64,
-        "score": "4-3"
+        "score": "4-3",
+        "date": "10 March"
       },
       {
         "player1": {
@@ -32,7 +33,8 @@
           "age": "21"
         },
         "winnerId": 16,
-        "score": "3-2"
+        "score": "3-2",
+        "date": "10 March"
       },
       {
         "player1": {
@@ -48,7 +50,8 @@
           "age": "22"
         },
         "winnerId": 145,
-        "score": "9-4"
+        "score": "9-4",
+        "date": "10 March"
       },
       {
         "player1": {
@@ -64,7 +67,8 @@
           "age": "18"
         },
         "winnerId": 2,
-        "score": "4-2"
+        "score": "4-2",
+        "date": "10 March"
       },
       {
         "player1": {
@@ -80,7 +84,8 @@
           "age": "19"
         },
         "winnerId": 53,
-        "score": "3-1"
+        "score": "3-1",
+        "date": "10 March"
       },
       {
         "player1": {
@@ -96,7 +101,8 @@
           "age": "22"
         },
         "winnerId": 5,
-        "score": "10-7"
+        "score": "10-7",
+        "date": "10 March"
       },
       {
         "player1": {
@@ -110,7 +116,10 @@
           "name": "Omar atef shata",
           "phone": "201270181483",
           "age": "20"
-        }
+        },
+        "date": "11 March",
+        "winnerId": 19,
+        "score": "4-2"
       },
       {
         "player1": {
@@ -124,7 +133,10 @@
           "name": "طارق عصام شحات تيتو",
           "phone": "01029212322",
           "age": "21"
-        }
+        },
+        "date": "11 March",
+        "winnerId": 34,
+        "score": "4-3"
       },
       {
         "player1": {
@@ -138,7 +150,10 @@
           "name": "كريم محمد",
           "phone": "01060537741",
           "age": "16"
-        }
+        },
+        "date": "11 March",
+        "winnerId": 87,
+        "score": "8-5"
       },
       {
         "player1": {
@@ -152,7 +167,10 @@
           "name": "محمد العشرى",
           "phone": "01061361216",
           "age": "22"
-        }
+        },
+        "date": "11 March",
+        "winnerId": 58,
+        "score": "8-4"
       },
       {
         "player1": {
@@ -166,7 +184,10 @@
           "name": "محمد ود",
           "phone": "01099875533",
           "age": "25"
-        }
+        },
+        "date": "11 March",
+        "winnerId": 9,
+        "score": "12-1"
       },
       {
         "player1": {
@@ -180,7 +201,10 @@
           "name": "محمد هشام",
           "phone": "01157282180",
           "age": "18"
-        }
+        },
+        "date": "11 March",
+        "winnerId": 4,
+        "score": "12-2"
       },
       {
         "player1": {
@@ -194,7 +218,10 @@
           "name": "Eyad waled ayad",
           "phone": "01017258710",
           "age": "19"
-        }
+        },
+        "date": "11 March",
+        "winnerId": 24,
+        "score": "3-1"
       },
       {
         "player1": {
@@ -208,7 +235,10 @@
           "name": "يوسف احمد حسنين ",
           "phone": "01009721497",
           "age": "20"
-        }
+        },
+        "date": "11 March",
+        "winnerId": 32,
+        "score": "5-4"
       },
       {
         "player1": {
@@ -222,7 +252,10 @@
           "name": "احمد جبل",
           "phone": "01092829213",
           "age": "28"
-        }
+        },
+        "date": "11 March",
+        "winnerId": 89,
+        "score": "7-3"
       },
       {
         "player1": {
@@ -236,7 +269,10 @@
           "name": "يحي هشام إسماعيل",
           "phone": "01099747830",
           "age": "18"
-        }
+        },
+        "date": "11 March",
+        "winnerId": 111,
+        "score": "8-5"
       }
     ],
     "active": true
@@ -256,7 +292,8 @@
           "name": "كريم ايمن",
           "phone": "01500045603",
           "age": "21"
-        }
+        },
+        "date": "14  March"
       },
       {
         "player1": {
@@ -270,7 +307,8 @@
           "name": "باقي",
           "phone": "01027369809",
           "age": "25"
-        }
+        },
+        "date": "14  March"
       },
       {
         "player1": {
@@ -284,80 +322,86 @@
           "name": "شهاب عصام",
           "phone": "01029906000",
           "age": "22"
-        }
+        },
+        "date": "14  March"
       },
       {
         "player1": {
-          "id": 0,
-          "name": "Winner R1-7",
-          "phone": "",
-          "age": ""
+          "id": 19,
+          "name": "محمد طلبة",
+          "phone": "01099082231",
+          "age": "20"
         },
         "player2": {
-          "id": 0,
-          "name": "Winner R1-8",
-          "phone": "",
-          "age": ""
-        }
+          "id": 34,
+          "name": "طارق عصام شحات تيتو",
+          "phone": "01029212322",
+          "age": "21"
+        },
+        "date": "14  March"
       },
       {
         "player1": {
-          "id": 0,
-          "name": "Winner R1-9",
-          "phone": "",
-          "age": ""
+          "id": 87,
+          "name": "كريم محمد",
+          "phone": "01060537741",
+          "age": "16"
         },
         "player2": {
-          "id": 0,
-          "name": "Winner R1-10",
-          "phone": "",
-          "age": ""
-        }
+          "id": 58,
+          "name": "كريم ضياء محمود",
+          "phone": "01558002908",
+          "age": "21"
+        },
+        "date": "14  March"
       },
       {
         "player1": {
-          "id": 0,
-          "name": "Winner R1-11",
-          "phone": "",
-          "age": ""
+          "id": 9,
+          "name": "محمد ود",
+          "phone": "01099875533",
+          "age": "25"
         },
         "player2": {
-          "id": 0,
-          "name": "Winner R1-12",
-          "phone": "",
-          "age": ""
-        }
+          "id": 4,
+          "name": "محمد هشام",
+          "phone": "01157282180",
+          "age": "18"
+        },
+        "date": "14  March"
       },
       {
         "player1": {
-          "id": 0,
-          "name": "Winner R1-13",
-          "phone": "",
-          "age": ""
+          "id": 24,
+          "name": "Eyad waled ayad",
+          "phone": "01017258710",
+          "age": "19"
         },
         "player2": {
-          "id": 0,
-          "name": "Winner R1-14",
-          "phone": "",
-          "age": ""
-        }
+          "id": 32,
+          "name": "Ahmed birgo",
+          "phone": "01034168261",
+          "age": "19"
+        },
+        "date": "14  March"
       },
       {
         "player1": {
-          "id": 0,
-          "name": "Winner R1-15",
-          "phone": "",
-          "age": ""
+          "id": 89,
+          "name": "احمد جبل",
+          "phone": "01092829213",
+          "age": "28"
         },
         "player2": {
-          "id": 0,
-          "name": "Winner R1-16",
-          "phone": "",
-          "age": ""
-        }
+          "id": 111,
+          "name": "سامح",
+          "phone": "01060235587",
+          "age": "23"
+        },
+        "date": "14  March"
       }
     ],
-    "active": false
+    "active": true
   },
   {
     "round": 3,
@@ -374,7 +418,8 @@
           "name": "Winner R2-2",
           "phone": "",
           "age": ""
-        }
+        },
+        "date": "14  March"
       },
       {
         "player1": {
@@ -388,7 +433,8 @@
           "name": "Winner R2-4",
           "phone": "",
           "age": ""
-        }
+        },
+        "date": "14  March"
       },
       {
         "player1": {
@@ -402,7 +448,8 @@
           "name": "Winner R2-6",
           "phone": "",
           "age": ""
-        }
+        },
+        "date": "14  March"
       },
       {
         "player1": {
@@ -416,10 +463,11 @@
           "name": "Winner R2-8",
           "phone": "",
           "age": ""
-        }
+        },
+        "date": "14  March"
       }
     ],
-    "active": false
+    "active": true
   },
   {
     "round": 4,
@@ -436,7 +484,8 @@
           "name": "Winner R3-2",
           "phone": "",
           "age": ""
-        }
+        },
+        "date": "14  March"
       },
       {
         "player1": {
@@ -450,10 +499,11 @@
           "name": "Winner R3-4",
           "phone": "",
           "age": ""
-        }
+        },
+        "date": "14  March"
       }
     ],
-    "active": false
+    "active": true
   },
   {
     "round": 5,
@@ -470,10 +520,11 @@
           "name": "Winner R4-2",
           "phone": "",
           "age": ""
-        }
+        },
+        "date": "14  March"
       }
     ],
-    "active": false,
+    "active": true,
     "thirdPlaceMatch": {
       "player1": {
         "id": 0,
@@ -486,7 +537,8 @@
         "name": "Semi-final loser 2",
         "phone": "",
         "age": ""
-      }
+      },
+      "date": "14  March"
     }
   }
 ]
