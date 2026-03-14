@@ -357,7 +357,9 @@
           "phone": "01558002908",
           "age": "21"
         },
-        "date": "14  March"
+        "date": "14  March",
+        "winnerId": 58,
+        "score": "16-12"
       },
       {
         "player1": {
@@ -372,7 +374,9 @@
           "phone": "01157282180",
           "age": "18"
         },
-        "date": "14  March"
+        "date": "14  March",
+        "winnerId": 9,
+        "score": "14-9"
       },
       {
         "player1": {
@@ -446,16 +450,16 @@
       },
       {
         "player1": {
-          "id": 0,
-          "name": "Winner R2-5",
-          "phone": "",
-          "age": ""
+          "id": 58,
+          "name": "كريم ضياء محمود",
+          "phone": "01558002908",
+          "age": "21"
         },
         "player2": {
-          "id": 0,
-          "name": "Winner R2-6",
-          "phone": "",
-          "age": ""
+          "id": 9,
+          "name": "محمد ود",
+          "phone": "01099875533",
+          "age": "25"
         },
         "date": "14  March"
       },
