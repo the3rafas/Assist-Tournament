@@ -509,7 +509,9 @@
           "phone": "01027369809",
           "age": "25"
         },
-        "date": "14  March"
+        "date": "14  March",
+        "winnerId": 145,
+        "score": "6-3"
       },
       {
         "player1": {
@@ -524,7 +526,9 @@
           "phone": "01092829213",
           "age": "28"
         },
-        "date": "14  March"
+        "date": "14  March",
+        "winnerId": 89,
+        "score": "7-3"
       }
     ],
     "active": true
@@ -534,16 +538,16 @@
     "matches": [
       {
         "player1": {
-          "id": 0,
-          "name": "Winner R4-1",
-          "phone": "",
-          "age": ""
+          "id": 145,
+          "name": "خالد العطار",
+          "phone": "01018028452",
+          "age": "22"
         },
         "player2": {
-          "id": 0,
-          "name": "Winner R4-2",
-          "phone": "",
-          "age": ""
+          "id": 89,
+          "name": "احمد جبل",
+          "phone": "01092829213",
+          "age": "28"
         },
         "date": "14  March"
       }
