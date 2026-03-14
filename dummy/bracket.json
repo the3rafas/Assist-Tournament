@@ -385,7 +385,9 @@
           "phone": "01034168261",
           "age": "19"
         },
-        "date": "14  March"
+        "date": "14  March",
+        "winnerId": 24,
+        "score": "13-8"
       },
       {
         "player1": {
@@ -400,7 +402,9 @@
           "phone": "01060235587",
           "age": "23"
         },
-        "date": "14  March"
+        "date": "14  March",
+        "winnerId": 89,
+        "score": "20-6"
       }
     ],
     "active": true
@@ -455,16 +459,16 @@
       },
       {
         "player1": {
-          "id": 0,
-          "name": "Winner R2-7",
-          "phone": "",
-          "age": ""
+          "id": 24,
+          "name": "Eyad waled ayad",
+          "phone": "01017258710",
+          "age": "19"
         },
         "player2": {
-          "id": 0,
-          "name": "Winner R2-8",
-          "phone": "",
-          "age": ""
+          "id": 89,
+          "name": "احمد جبل",
+          "phone": "01092829213",
+          "age": "28"
         },
         "date": "14  March"
       }
