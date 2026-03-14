@@ -323,7 +323,9 @@
           "phone": "01029906000",
           "age": "22"
         },
-        "date": "14  March"
+        "date": "14  March",
+        "winnerId": 5,
+        "score": "12-8"
       },
       {
         "player1": {
@@ -429,10 +431,10 @@
       },
       {
         "player1": {
-          "id": 0,
-          "name": "Winner R2-3",
-          "phone": "",
-          "age": ""
+          "id": 5,
+          "name": "شهاب عصام",
+          "phone": "01029906000",
+          "age": "22"
         },
         "player2": {
           "id": 2,
